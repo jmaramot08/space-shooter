@@ -6,29 +6,19 @@
 import sys
 from time import sleep
 import json
-
 import pygame
+from random import randint
+import random
 
-# to access our game settings
-from settings import Settings
-
-# to access the ship
-from ship import Ship
-
-# to access the bullets
-from bullet import Bullet
-
+# game module imports
+from settings import Settings # to access our game settings
+from ship import Ship # to access the ship
+from bullet import Bullet # to access the bullets
 from alien import Alien
-
 from game_stats import GameStats
-
 from button import Button
-
 from scoreboard import Scoreboard
 
-from random import randint
-
-import random
 
 class SidewaysShooter:
     """Overall class to manage game assets and behavior."""
@@ -205,7 +195,7 @@ class SidewaysShooter:
         """Update position of bullets and get rid of old bullets."""
         self.bullets.update()
 
-        # Get rid of bullets that have disappeared.
+        # Get rid of bullets that have disappeared from screen
         for bullet in self.bullets.copy():
             if bullet.rect.left >= 1200:
                 self.bullets.remove(bullet)
@@ -216,9 +206,7 @@ class SidewaysShooter:
 
     def _check_bullet_alien_collisions(self):
         """Respond to bullet-alien collisions."""
-        # Remove any bullets and aliens that have collided and resets aliens
-        # after all have been shot.
-
+        # Remove any bullets and aliens that have collided
         collisions = pygame.sprite.groupcollide(
                             self.bullets, self.aliens, True, True)
 
@@ -337,4 +325,3 @@ if __name__ == '__main__':
     # Make a game instance, and run the game.
     ai = SidewaysShooter()
     ai.run_game()
-

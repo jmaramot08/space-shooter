@@ -11,7 +11,7 @@ class Button:
         self.button_color = (42, 83, 247)
         self.text_color = (255, 255, 255)
         
-        # None uses Pygames default font
+        # None arg to use Pygame's default font
         self.font = pygame.font.SysFont(None, 48)
 
         # Build the button's rect object and center it.
